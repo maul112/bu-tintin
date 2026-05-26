@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Bu Tintin</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Ketik nama barang disini..." autocomplete="off">
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="noResults" class="hidden">Barang tidak ditemukan. Coba cari nama lain.</div>
+        <div class="product-grid" id="productGrid">
+            <!-- Produk akan dimuat disini oleh JavaScript -->
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

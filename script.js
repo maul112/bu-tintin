@@ -17,7 +17,7 @@ const products = [
 // State Keranjang Belanja
 let cart = {}; // Menyimpan format { id_produk: jumlah }
 // Nomor WA tujuan (gunakan format 628... tanpa spasi/tanda plus)
-const whatsappNumber = "6281234567890"; 
+const whatsappNumber = "6281958949997";
 
 // Fungsi untuk format angka ke bentuk Rupiah (contoh: Rp 75.000)
 function formatRupiah(angka) {

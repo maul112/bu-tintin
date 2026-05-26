@@ -22,14 +22,42 @@
     </main>
 
     <!-- Cart Floating Bar -->
-    <div id="cartBar" class="cart-bar hidden">
+    <div id="cartBar" class="cart-bar hidden" onclick="openCartModal()">
         <div class="cart-info">
             <span id="cartTotalItems">0 Barang</span>
             <span id="cartTotalPrice">Rp 0</span>
         </div>
-        <button id="btnPesanWA" class="btn-pesan">
-            Pesan via WA
-        </button>
+        <div class="cart-actions">
+            <button class="btn-clear-bar" onclick="clearCart(event)">
+                Kosongkan
+            </button>
+            <button class="btn-lihat">
+                Lihat Detail
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Keranjang -->
+    <div id="cartModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Keranjang Belanja</h2>
+                <button class="btn-close" onclick="closeCartModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="cartItemList">
+                <!-- List cart items akan dimuat disini -->
+            </div>
+            <div class="modal-footer">
+                <div class="modal-total-price">
+                    <span>Total:</span>
+                    <span id="modalTotalPrice">Rp 0</span>
+                </div>
+                <div class="modal-action-buttons">
+                    <button class="btn-clear" onclick="clearCart()">Kosongkan</button>
+                    <button id="btnPesanWA" class="btn-pesan">Pesan via WA</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

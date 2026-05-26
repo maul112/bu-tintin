@@ -34,6 +34,11 @@ const productGrid = document.getElementById('productGrid');
 const searchInput = document.getElementById('searchInput');
 const noResults = document.getElementById('noResults');
 
+// Elemen Modal Keranjang
+const cartModal = document.getElementById('cartModal');
+const cartItemList = document.getElementById('cartItemList');
+const modalTotalPrice = document.getElementById('modalTotalPrice');
+
 // Fungsi untuk menampilkan daftar produk ke layar
 function renderProducts(items) {
     // Kosongkan area produk terlebih dahulu
@@ -116,8 +121,16 @@ function updateCartUI() {
         cartBar.classList.remove('hidden');
         cartTotalItems.textContent = `${totalItems} Barang`;
         cartTotalPrice.textContent = formatRupiah(totalPrice);
+        
+        // Update isi modal jika sedang terbuka
+        if (cartModal && !cartModal.classList.contains('hidden')) {
+            renderCartItems();
+        }
     } else {
         cartBar.classList.add('hidden');
+        if (typeof closeCartModal === 'function') {
+            closeCartModal();
+        }
     }
 }
 
@@ -134,6 +147,72 @@ searchInput.addEventListener('input', (e) => {
     // Tampilkan produk hasil saringan
     renderProducts(filteredProducts);
 });
+
+// Fungsi Modal Keranjang
+function openCartModal() {
+    cartModal.classList.remove('hidden');
+    renderCartItems();
+}
+
+function closeCartModal() {
+    cartModal.classList.add('hidden');
+}
+
+// Menutup modal jika klik di luar area putih (modal-content)
+cartModal.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+        closeCartModal();
+    }
+});
+
+// Fungsi untuk me-render daftar barang di modal
+function renderCartItems() {
+    cartItemList.innerHTML = '';
+    let totalPrice = 0;
+    
+    for (const [id, qty] of Object.entries(cart)) {
+        if (qty > 0) {
+            const product = products.find(p => p.id == parseInt(id));
+            const subtotal = product.price * qty;
+            totalPrice += subtotal;
+            
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'cart-item';
+            itemDiv.innerHTML = `
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${product.name}</div>
+                    <div class="cart-item-price">${qty} x ${formatRupiah(product.price)}</div>
+                </div>
+                <div class="cart-item-subtotal">
+                    ${formatRupiah(subtotal)}
+                </div>
+            `;
+            cartItemList.appendChild(itemDiv);
+        }
+    }
+    
+    modalTotalPrice.textContent = formatRupiah(totalPrice);
+}
+
+// Fungsi Kosongkan Keranjang
+function clearCart(event) {
+    if (event) {
+        event.stopPropagation(); // Mencegah modal terbuka saat klik tombol ini
+    }
+    
+    if (confirm('Apakah Anda yakin ingin mengosongkan keranjang belanja?')) {
+        cart = {};
+        updateCartUI();
+        
+        // Reset angka di daftar produk menjadi 0
+        products.forEach(p => {
+            const qtyElement = document.getElementById(`qty-${p.id}`);
+            if (qtyElement) {
+                qtyElement.textContent = '0';
+            }
+        });
+    }
+}
 
 // Event untuk tombol Pesan via WA
 document.getElementById('btnPesanWA').addEventListener('click', () => {

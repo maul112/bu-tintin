@@ -19,7 +19,7 @@ const products = [
     { id: 15, name: "Rawon Daging/Tulang (50rb)", price: 50000, image: "Rawon daging atau tulang 50k.jpg" },
     { id: 16, name: "Otak-otak Cakalan", price: 10000, image: "Otak-otak cakalan.jpg" },
     { id: 17, name: "Masak Petis Telur/Ayam", price: 5000, image: "Masak petis telur atau ayam 1 biji.jpg" },
-    { id: 18, name: "Bakwan Jagung (1 biji)", price: 1000, image: "Bakwan jagung 1 biji.jpg" },
+    { id: 18, name: "Bakwan Jagung (5 biji)", price: 5000, image: "Bakwan jagung 5 biji.jpg" },
     { id: 19, name: "Pindang Goreng", price: 10000, image: "Pindang goreng.jpg" },
     { id: 20, name: "Tumis Kangkung Toge", price: 5000, image: "Tumis kangkung toge.jpeg" },
     { id: 21, name: "Sayur Asem", price: 5000, image: "Sayur asem.jpg" },

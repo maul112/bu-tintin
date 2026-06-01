@@ -2,16 +2,37 @@
 
 // Hardcoded data JSON sesuai permintaan agar mudah dibuka di lokal (tanpa perlu web server)
 const products = [
-    { id: 1, name: "Beras Premium 5kg", price: 75000 },
-    { id: 2, name: "Minyak Goreng 2L", price: 34000 },
-    { id: 3, name: "Gula Pasir 1kg", price: 16000 },
-    { id: 4, name: "Telur Ayam 1kg", price: 28000 },
-    { id: 5, name: "Mie Instan Goreng (Dus)", price: 110000 },
-    { id: 6, name: "Kopi Sachet 1 Renceng", price: 15000 },
-    { id: 7, name: "Susu Kental Manis", price: 12500 },
-    { id: 8, name: "Teh Celup", price: 8000 },
-    { id: 9, name: "Sabun Cuci Piring", price: 14000 },
-    { id: 10, name: "Deterjen Bubuk 1kg", price: 22000 }
+    { id: 1, name: "Soto Ayam", price: 50000, image: "Soto ayam.jpg" },
+    { id: 2, name: "Jagung Goreng Campur Kacang", price: 5000, image: "Jagung goreng campur kacang.jpg" }, // Default harga 5rb krn tidak disebut
+    { id: 3, name: "Sop", price: 5000, image: "Sop.jpg" },
+    { id: 4, name: "Ayam Panggang (1 biji)", price: 5000, image: "Ayam panggang.jpg" },
+    { id: 5, name: "Paes Kendui", price: 8000, image: "Paes kendui.jpg" },
+    { id: 6, name: "Paes Kaben", price: 6000, image: "Paes kaben.jpg" },
+    { id: 7, name: "Kendui", price: 8000, image: "Kendui.jpg" },
+    { id: 8, name: "Kopek Goreng", price: 10000, image: "Kopek goreng.jpg" },
+    { id: 9, name: "Tumis Wortel Buncis Tempe", price: 10000, image: "Tumis wortel buncis tempe.jpg" },
+    { id: 10, name: "Lele Bumbu", price: 35000, image: "Lele bumbu.jpg" },
+    { id: 11, name: "Koneng Goreng", price: 10000, image: "Koneng goreng.jpg" },
+    { id: 12, name: "Masak Merah Daging (1 biji)", price: 7000, image: "Masak merah daging 1 bij.jpg" },
+    { id: 13, name: "Rawon Daging/Tulang (20rb)", price: 20000, image: "Rawon daging atau tulang 20k.jpg" },
+    { id: 14, name: "Rawon Daging/Tulang (30rb)", price: 30000, image: "Rawon daging atau tulang 30k.jpg" },
+    { id: 15, name: "Rawon Daging/Tulang (50rb)", price: 50000, image: "Rawon daging atau tulang 50k.jpg" },
+    { id: 16, name: "Otak-otak Cakalan", price: 10000, image: "Otak-otak cakalan.jpg" },
+    { id: 17, name: "Masak Petis Telur/Ayam", price: 5000, image: "Masak petis telur atau ayam.jpg" },
+    { id: 18, name: "Bakwan Jagung (1 biji)", price: 1000, image: "Bakwan jagung 1 biji.jpg" },
+    { id: 19, name: "Pindang Goreng", price: 10000, image: "Pindang goreng.jpg" },
+    { id: 20, name: "Tumis Kangkung Toge", price: 5000, image: "Tumis kangkung toge.jpeg" },
+    { id: 21, name: "Sayur Asem", price: 5000, image: "Sayur asem.jpg" },
+    { id: 22, name: "Cangkarok", price: 5000, image: "Cangkarok.jpg" },
+    { id: 23, name: "Tumis Pare", price: 10000, image: "Tumis pare.jpg" },
+    { id: 24, name: "Tumis Wortel Buncis Brokoli", price: 10000, image: "Tumis wortel buncis brokoli.jpg" },
+    { id: 25, name: "Krupuk Udang Kwanyar", price: 20000, image: "Krupuk udang Kwanyar sudah goreng.jpg" },
+    { id: 26, name: "Lodeh", price: 5000, image: "Lodeh.jpg" },
+    { id: 27, name: "Urap-urap", price: 5000, image: "Urap-urap.jpg" },
+    { id: 28, name: "Kendui Goreng", price: 10000, image: "Kendui goreng.jpg" },
+    { id: 29, name: "Kolek Kacang Ijo", price: 5000, image: "Kolek kacang ijo.jpg" },
+    { id: 30, name: "Pisang Rebus (1 biji)", price: 2000, image: "Pisang rebus 1 biji.jpg" },
+    { id: 31, name: "Ayam Serundeng (1 biji)", price: 5000, image: "Ayam serundeng 1 biji.jpg" }
 ];
 
 // State Keranjang Belanja
@@ -59,7 +80,9 @@ function renderProducts(items) {
             const currentQty = cart[product.id] || 0;
             
             card.innerHTML = `
-                <div class="product-image-placeholder">Gambar<br>${product.name}</div>
+                <div class="product-image-container">
+                    <img src="img/${product.image}" alt="${product.name}" class="product-image">
+                </div>
                 <div class="product-info">
                     <div class="product-name">${product.name}</div>
                     <div class="product-price">${formatRupiah(product.price)}</div>

@@ -102,21 +102,23 @@ body {
     transform: scale(0.98);
 }
 
-/* Tempat sementara untuk gambar produk */
-.product-image-placeholder {
+/* Container dan Gambar Produk */
+.product-image-container {
     width: 100%;
-    height: 180px;
-    background-color: #e0e0e0;
+    height: 200px; /* Tinggi gambar seragam */
+    background-color: #f5f5f5;
     border-radius: 12px;
+    overflow: hidden; /* Supaya sudut gambar tidak melampaui kartu */
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 10px;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Menjamin gambar tidak gepeng dan mengisi penuh kontainer */
 }
 
 .product-info {
